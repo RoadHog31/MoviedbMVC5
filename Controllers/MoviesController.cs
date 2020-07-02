@@ -1,4 +1,5 @@
 ﻿using MoviedbMVC5.Models;
+using MoviedbMVC5.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,19 @@ namespace MoviedbMVC5.Controllers
         {
             var movie = new Movie() { name = "Shrek!" };
 
-            return View(movie);
+            var customers = new List<Customer>
+            {
+                new Customer { name = "Customer 1"},
+                new Customer { name = "Customer 2"}
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customer = customers
+            };
+
+            return View(viewModel);
             //return Content("Hello world!");
             //return HttpNotFound();
             //return new EmptyResult();
@@ -41,6 +54,13 @@ namespace MoviedbMVC5.Controllers
             }
 
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageindex, sortBy));
+        }
+
+        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
+        public ActionResult ByReleaseYear(int year, int month)
+        {
+            return Content(year + "/" + month);
+
         }
     }
 }

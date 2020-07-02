@@ -1,8 +1,27 @@
-﻿@model MoviedbMVC5.Models.Movie
+﻿@model MoviedbMVC5.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.name</h2>
+@*This how you render content dynamically*@
+@{ 
+    var className = Model.Customer.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Movie.name</h2>
+
+@if (Model.Customer.Count == 0)
+{
+    <p>No one has rented this movie before.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in Model.Customer)
+        {
+            <li>@item.name</li>
+        }
+    </ul>
+}
 
