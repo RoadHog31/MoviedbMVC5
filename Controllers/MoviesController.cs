@@ -40,7 +40,7 @@ namespace MoviedbMVC5.Controllers
                 sortBy = "Name";
             }
 
-            return Content(String.Format("pageIndex={0}&sortBy={1}"));
+            return Content(String.Format("pageIndex={0}&sortBy={1}", pageindex, sortBy));
         }
     }
 }
