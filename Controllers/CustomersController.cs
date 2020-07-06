@@ -3,6 +3,7 @@ using MoviedbMVC5.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,26 +15,22 @@ namespace MoviedbMVC5.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Customers";
+            
+            //var customer = new Customer{ Id = 1, name = "John Smith" };          
 
-            //var customer = new Customer{ Id = 1, name = "John Smith" };
 
-            var customers = new List<Customer>
-            {
-                new Customer { Id=1, name = "John Smith"},
-                new Customer { Id=2, name = "Mary Williams"}
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {                
-                Customer = customers
-            };
-
-            return View(viewModel);
+            return View();
         }
 
         // GET: Customers/Details/5
-        public ActionResult Details(int id)
+        [Route("Customers/Details/{id:int?}")]
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             var customer = new List<Customer>
             {
                 new Customer { Id = 1, name = "John Smith"},
@@ -44,6 +41,18 @@ namespace MoviedbMVC5.Controllers
             {
                 Customer = customer
             };
+
+             
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                
+
+            }
 
             return View(viewModel);
         }
@@ -61,6 +70,8 @@ namespace MoviedbMVC5.Controllers
             try
             {
                 // TODO: Add insert logic here
+
+                
 
                 return RedirectToAction("Index");
             }

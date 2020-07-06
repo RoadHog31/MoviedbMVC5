@@ -13,12 +13,17 @@ namespace MoviedbMVC5.Controllers
         // GET: Movies
         public ActionResult Random()
         {
-            var movie = new Movie() { name = "Shrek!" };
+            var movie = new List<Movie> { 
+                
+              new Movie { Id=1, name = "Shrek!" },
+              new Movie { Id=2, name = "E.T." }
+
+            };
 
             var customers = new List<Customer>
             {
-                new Customer { name = "Customer 1"},
-                new Customer { name = "Customer 2"}
+                new Customer { Id=1, name = "John Smith"},
+                new Customer { Id=2, name = "Mary Williamson"}
             };
 
             var viewModel = new RandomMovieViewModel
@@ -41,7 +46,7 @@ namespace MoviedbMVC5.Controllers
         }
 
         //movies
-        public ActionResult Index(int? pageindex, string sortBy)
+        public ActionResult Pagination(int? pageindex, string sortBy)
         {
             if (!pageindex.HasValue)
             {
@@ -56,11 +61,13 @@ namespace MoviedbMVC5.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageindex, sortBy));
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseYear(int year, int month)
         {
             return Content(year + "/" + month);
 
         }
+
+        
     }
 }

@@ -6,26 +6,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Customers Movies", "Customers")
+            Customers Movies
         </th>
-        <th>Customers</th>
+        
     </tr>
     @if (Model != null)
     {
-        foreach (var item in Model.Customer)
-        {
-            <tr>
-                <td>
-                    <li>
-                        <a href="/Customer/Index">Customers</a>
-                    </li>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        }
+        
     }
 
 </table>
+
+
 

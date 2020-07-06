@@ -3,13 +3,17 @@
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<p>Movies</p>
 @*This how you render content dynamically*@
-@{ 
-    var className = Model.Customer.Count > 0 ? "popular" : null;
-}
+@{
+    if (Model.Customer != null)
+    {
+        var className = Model.Customer.Count > 0 ? "popular" : null;
 
-<h2 class="@className">@Model.Movie.name</h2>
+        <h2 class="@className"></h2>
+    }
+
+}
 
 @if (Model.Customer.Count == 0)
 {
@@ -18,7 +22,7 @@
 else
 {
     <ul>
-        @foreach (var item in Model.Customer)
+        @foreach (var item in Model.Movie)
         {
             <li>@item.name</li>
         }
