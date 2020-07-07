@@ -42,7 +42,7 @@ namespace MoviedbMVC5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,name")] Movie movie)
+        public ActionResult Create([Bind(Include = "Id,Title,ReleaseDate, Genre ")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace MoviedbMVC5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,name")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title, ReleaseDate, Genre")] Movie movie)
         {
             if (ModelState.IsValid)
             {
