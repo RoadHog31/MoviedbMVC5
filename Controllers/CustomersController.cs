@@ -16,7 +16,7 @@ namespace MoviedbMVC5.Controllers
         {
             ViewBag.Message = "Customers";
             
-            //var customer = new Customer{ Id = 1, name = "John Smith" };          
+            //var customer = new Customer{ Id = 1, name = "John Smith" };         
 
 
             return View();
@@ -42,7 +42,10 @@ namespace MoviedbMVC5.Controllers
                 Customer = customer
             };
 
-             
+            using (var db = new MovieContext())
+            {
+
+            }
 
             if (customer == null)
             {
@@ -50,11 +53,10 @@ namespace MoviedbMVC5.Controllers
             }
             else
             {
-                
+                return View(viewModel);
 
             }
-
-            return View(viewModel);
+            
         }
 
         // GET: Customers/Create
