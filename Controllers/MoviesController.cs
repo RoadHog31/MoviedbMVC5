@@ -1,73 +1,127 @@
-﻿using MoviedbMVC5.Models;
-using MoviedbMVC5.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MoviedbMVC5.Models;
 
 namespace MoviedbMVC5.Controllers
 {
     public class MoviesController : Controller
     {
+        private MovieContext db = new MovieContext();
+
         // GET: Movies
-        public ActionResult Random()
+        public ActionResult Index()
         {
-            var movie = new List<Movie> { 
-                
-              new Movie { Id=1, name = "Shrek!" },
-              new Movie { Id=2, name = "E.T." }
-
-            };
-
-            var customers = new List<Customer>
-            {
-                new Customer { Id=1, name = "John Smith"},
-                new Customer { Id=2, name = "Mary Williamson"}
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customer = customers
-            };
-
-            return View(viewModel);
-            //return Content("Hello world!");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+            return View(db.Movies.ToList());
         }
 
-        public ActionResult Edit(int id)
+        // GET: Movies/Details/5
+        public ActionResult Details(int? id)
         {
-
-            return Content("id=" + id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
         }
 
-        //movies
-        public ActionResult Pagination(int? pageindex, string sortBy)
+        // GET: Movies/Create
+        public ActionResult Create()
         {
-            if (!pageindex.HasValue)
+            return View();
+        }
+
+        // POST: Movies/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,name")] Movie movie)
+        {
+            if (ModelState.IsValid)
             {
-                pageindex = 1;
+                db.Movies.Add(movie);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            if (String.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "Name";
-            }
-
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageindex, sortBy));
+            return View(movie);
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
-        public ActionResult ByReleaseYear(int year, int month)
+        // GET: Movies/Edit/5
+        public ActionResult Edit(int? id)
         {
-            return Content(year + "/" + month);
-
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
         }
 
-        
+        // POST: Movies/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,name")] Movie movie)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(movie);
+        }
+
+        // GET: Movies/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        // POST: Movies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
