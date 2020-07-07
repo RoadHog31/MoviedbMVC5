@@ -1,10 +1,6 @@
 ﻿using MoviedbMVC5.Models;
-using MoviedbMVC5.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MoviedbMVC5.Controllers
@@ -16,8 +12,7 @@ namespace MoviedbMVC5.Controllers
         {
             ViewBag.Message = "Customers";
             
-            //var customer = new Customer{ Id = 1, name = "John Smith" };         
-
+            //var customer = new Customer{ Id = 1, name = "John Smith" }; 
 
             return View();
         }
@@ -37,10 +32,7 @@ namespace MoviedbMVC5.Controllers
                 new Customer { Id = 2, name = "Mary Williams"}
             };
 
-            var viewModel = new RandomMovieViewModel
-            {
-                Customer = customer
-            };
+            
 
             using (var db = new MovieContext())
             {
@@ -53,7 +45,7 @@ namespace MoviedbMVC5.Controllers
             }
             else
             {
-                return View(viewModel);
+                return View();
 
             }
             

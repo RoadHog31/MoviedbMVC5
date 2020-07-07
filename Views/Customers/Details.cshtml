@@ -1,4 +1,4 @@
-﻿@model MoviedbMVC5.ViewModels.RandomMovieViewModel
+﻿@model MoviedbMVC5.Models.Customer
 
 @{
     ViewBag.Title = "Details";
@@ -13,6 +13,6 @@
     <ul>
         @foreach (var customer in Model.Customer)
         {
-        <li>@Html.ActionLink(customer.name, "Edit", new { id = customer.Id })</li>
+        <li>@Html.ActionLink(customer.name, "Edit", new {  })</li>
         }
     </ul>
