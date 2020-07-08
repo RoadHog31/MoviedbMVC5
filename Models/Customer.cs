@@ -9,5 +9,7 @@ namespace MoviedbMVC5.Models
     {
         public int Id { get; set; }
         public string name { get; set; }
+
+        public virtual List<Movie> Movies { get; set; }
     }
 }

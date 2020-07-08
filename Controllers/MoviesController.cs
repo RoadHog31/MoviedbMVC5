@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using MoviedbMVC5.Models;
+using MoviedbMVC5.DAL;
 
 namespace MoviedbMVC5.Controllers
 {

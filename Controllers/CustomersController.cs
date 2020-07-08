@@ -1,4 +1,5 @@
-﻿using MoviedbMVC5.Models;
+﻿using MoviedbMVC5.DAL;
+using MoviedbMVC5.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;

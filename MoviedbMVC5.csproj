@@ -143,10 +143,14 @@
     <Compile Include="Migrations\202007071937584_MovieUpdated.designer.cs">
       <DependentUpon>202007071937584_MovieUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007080923586_CustomerMovieListAdded.cs" />
+    <Compile Include="Migrations\202007080923586_CustomerMovieListAdded.designer.cs">
+      <DependentUpon>202007080923586_CustomerMovieListAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\MovieContext.cs" />
+    <Compile Include="DAL\MovieContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007071937584_MovieUpdated.resx">
       <DependentUpon>202007071937584_MovieUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007080923586_CustomerMovieListAdded.resx">
+      <DependentUpon>202007080923586_CustomerMovieListAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
