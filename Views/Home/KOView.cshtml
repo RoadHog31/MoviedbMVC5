@@ -1,0 +1,33 @@
+﻿@model MoviedbMVC5.Models.Movie
+
+@{
+    ViewBag.Title = "KOView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome <span data-bind="text: getName()"></span></h2>
+
+
+@*Knockout ViewModel creation*@
+@section Scripts{
+    <script>
+        function ViewModel(title, genre) {
+
+            var self = this;
+
+            self.movieNameGenre = title + ' ' + genre;
+
+            //This  function  is  a  wrapper  to the name property.
+            self.getName = function () {
+
+                return self.movieNameGenre;
+            };
+        };
+
+        var viewModel = new ViewModel("@Model.Title", "@Model.Genre");
+        $(document).ready(function () {
+            ko.applyBindings(viewModel);
+        });
+    </script>
+    }
+

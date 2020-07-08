@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviedbMVC5.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace MoviedbMVC5.Controllers
 {
     public class HomeController : Controller
     {
+        private MovieContext db = new MovieContext();
+
         public ActionResult Index()
         {
             return View();
@@ -30,6 +33,18 @@ namespace MoviedbMVC5.Controllers
         public ActionResult Basic()
         {
             return View();
+        }
+
+        public ActionResult KOView()
+        {
+            var movie = new Movie
+            {
+                Title = "Batman",
+                Genre = "Action/Adventure"
+
+            };
+
+            return View(movie);
         }
     }
 }

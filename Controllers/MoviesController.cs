@@ -109,7 +109,7 @@ namespace MoviedbMVC5.Controllers
             db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        }        
 
         protected override void Dispose(bool disposing)
         {
