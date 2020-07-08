@@ -6,7 +6,7 @@ namespace MoviedbMVC5.Extensions
 {
     public static class HtmlHelperExtensions
     {
-        public static HtmlString HtmlConvertToJson(this HtmlHelper htmlHelper, object model)
+        public static HtmlString HtmlConvertToJson(object model)
         {
             var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, Formatting = Formatting.Indented }; 
             

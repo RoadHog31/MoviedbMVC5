@@ -44,7 +44,7 @@
                 self.movies = movies;
             };
 
-            var viewModel = new ViewModel(@Html.HtmlHelperExtensions.HtmlConvertToJson(model));
+            var viewModel = new ViewModel(@MoviedbMVC5.Extensions.HtmlHelperExtensions.HtmlConvertToJson(Model));
             ko.applyBindings(viewModel);
 
         </script>   
