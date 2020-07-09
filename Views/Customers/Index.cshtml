@@ -1,8 +1,10 @@
-﻿@model IEnumerable<MoviedbMVC5.Models.Customer>
+﻿@using MoviedbMVC5.Models
+@model IEnumerable<MoviedbMVC5.Models.Customer>
 
 @{
     ViewBag.Title = "Customer List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var queryOptions = (QueryOptions)ViewBag.QueryOptions;
 }
 
 <h2>Create Customer</h2>
@@ -13,8 +15,8 @@
 
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@MoviedbMVC5.Extensions.HtmlHelperExtensions.BuildSortableLink(this.Html, "First Name", "Index", "FirstName", queryOptions)</th>
+            <th>@MoviedbMVC5.Extensions.HtmlHelperExtensions.BuildSortableLink(this.Html, "Last Name", "Index", "LastName", queryOptions)</th>
             <th>@Html.DisplayNameFor(model => model.FullName)</th>
             <th>@Html.DisplayNameFor(model => model.Movies)</th>
             <th>Actions</th>

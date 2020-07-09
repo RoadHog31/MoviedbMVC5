@@ -3,7 +3,9 @@ using MoviedbMVC5.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 
 namespace MoviedbMVC5.Controllers
@@ -13,10 +15,13 @@ namespace MoviedbMVC5.Controllers
         private MovieContext db = new MovieContext();
 
         // GET: Customers
-        public ActionResult Index()
-        {            
+        public ActionResult Index([Form] QueryOptions queryOptions)
+        {
+            var customers = db.Customers.OrderBy(queryOptions.Sort);
 
-            return View(db.Customers.ToList());
+            ViewBag.QueryOptions = queryOptions;
+
+            return View(customers.ToList());
         }
 
         // GET: Customers/Details/5
