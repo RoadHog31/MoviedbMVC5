@@ -7,7 +7,7 @@ namespace MoviedbMVC5.Extensions
 {
     public static class HtmlHelperExtensions
     {
-        /*Covert model data to Json functions*/
+        /*Covert model data to Json functions - use Json.Net package*/
         public static HtmlString HtmlConvertToJson(object model)
         {
             var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, Formatting = Formatting.Indented };
@@ -15,7 +15,7 @@ namespace MoviedbMVC5.Extensions
             return new HtmlString(JsonConvert.SerializeObject(model, settings));
         }
 
-        /*Sorting functions*/
+        /*Sorting functions - use Dynamic Linq package*/
         public static MvcHtmlString BuildSortableLink(this HtmlHelper htmlHelper, string fieldName, string actionName, string sortField, QueryOptions queryOptions) 
         { var urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext); 
             

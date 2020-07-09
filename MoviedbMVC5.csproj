@@ -162,8 +162,8 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="DAL\MovieContext.cs" />
-    <Compile Include="Models\QueryOptions.cs" />
-    <Compile Include="Models\SortOrder.cs" />
+    <Compile Include="ViewModels\QueryOptions.cs" />
+    <Compile Include="ViewModels\SortOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,7 +327,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
