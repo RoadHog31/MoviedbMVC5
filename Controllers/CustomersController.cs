@@ -10,7 +10,7 @@ namespace MoviedbMVC5.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly MovieContext db = new MovieContext();
+        private MovieContext db = new MovieContext();
 
         // GET: Customers
         public ActionResult Index()
