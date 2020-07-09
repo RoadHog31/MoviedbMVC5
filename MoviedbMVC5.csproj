@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202007080923586_CustomerMovieListAdded.designer.cs">
       <DependentUpon>202007080923586_CustomerMovieListAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007090937449_CustomerPropertiesChanged.cs" />
+    <Compile Include="Migrations\202007090937449_CustomerPropertiesChanged.designer.cs">
+      <DependentUpon>202007090937449_CustomerPropertiesChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -310,9 +314,11 @@
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Movies\Edit.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Home\KOView.cshtml" />
-    <Content Include="Views\Movies\IndexKO.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007080923586_CustomerMovieListAdded.resx">
       <DependentUpon>202007080923586_CustomerMovieListAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007090937449_CustomerPropertiesChanged.resx">
+      <DependentUpon>202007090937449_CustomerPropertiesChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

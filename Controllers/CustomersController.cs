@@ -1,6 +1,7 @@
 ﻿using MoviedbMVC5.DAL;
 using MoviedbMVC5.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
@@ -8,14 +9,13 @@ namespace MoviedbMVC5.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly MovieContext db = new MovieContext();
+
         // GET: Customers
         public ActionResult Index()
-        {
-            ViewBag.Message = "Customers";
-            
-            //var customer = new Customer{ Id = 1, name = "John Smith" }; 
+        {            
 
-            return View();
+            return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5
@@ -29,8 +29,8 @@ namespace MoviedbMVC5.Controllers
 
             var customer = new List<Customer>
             {
-                new Customer { Id = 1, name = "John Smith"},
-                new Customer { Id = 2, name = "Mary Williams"}
+                new Customer { Id = 1, FirstName = "John Smith"},
+                new Customer { Id = 2, FirstName = "Mary Williams"}
             };
 
             

@@ -11,18 +11,14 @@ namespace MoviedbMVC5.Controllers
     {
         private MovieContext db = new MovieContext();
 
+        
         // GET: Movies
         public ActionResult Index()
         {
             /*Once  the  data  has been  queried  from  the  database,  any  further  manipulations  to  the results  will  be  done  strictly  on  the  in-memory object  and  not against the database.*/
             return View(db.Movies.ToList());
-        }
-
-        //Knockout test
-        public ActionResult IndexKO()
-        {
-            return View(db.Movies.ToList());
-        }
+        }       
+        
 
         // GET: Movies/Details/5
         public ActionResult Details(int? id)

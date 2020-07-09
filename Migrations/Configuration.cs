@@ -36,7 +36,7 @@
                 new Customer
                 {
                     Id = 1,
-                name = "Stephen",
+                FirstName = "Stephen",
                 Movies = movies
                 }
                 

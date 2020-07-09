@@ -1,21 +1,67 @@
-﻿@model MoviedbMVC5.Models.Customer
+﻿@model IEnumerable<MoviedbMVC5.Models.Customer>
 
+@{
+    ViewBag.Title = "Customer List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<h3>@ViewBag.Message</h3>
+<h2>Create Customer</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            Customers Movies
-        </th>
-        
-    </tr>
-    @if (Model != null)
-    {
-        
-    }
+<p>@Html.ActionLink("Create New", "Create")</p>
 
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.Movies)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: customers">
+        <tr>
+            <td data-bind="text: FirstName"></td>
+            <td data-bind="text: LastName"></td>
+            <td data-bind="text: getName()"></td>
+            <td data-bind="text: Movies"></td>
+            <td>
+                <a data-bind="attr: { href: '@Url.Action("Details")/' + Id }" class="btn btn-info">Details</a>
+                <a data-bind="attr: { href: '@Url.Action("Edit")/' + Id }" class="btn btn-primary">Edit</a>
+                <a data-bind="attr: { href: '@Url.Action("Delete")/' + Id }" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+@section Scripts{
+    <script>
+
+            function ViewModel(customers, firstName, lastName) {
+
+                var self = this;
+
+                @*View foreach: movies is databound to this property.*@
+                self.customers = customers;
+                self.fullName = firstName + '  ' + lastName;
+
+                //This  function  is  a  wrapper  to the name property.
+                self.getName = function () {
+
+                    return self.fullName;
+                };
+            };
+
+            var viewModel = new ViewModel(@MoviedbMVC5.Extensions.HtmlHelperExtensions.HtmlConvertToJson(Model));
+        $(document).ready(function () {
+            ko.applyBindings(viewModel);
+        });       
+        
+    </script>
+}
+
+
 
 
 
