@@ -24,7 +24,7 @@
         <tr>
             <td data-bind="text: FirstName"></td>
             <td data-bind="text: LastName"></td>
-            <td data-bind="text: getName()"></td>
+            <td><span data-bind="text: getName()"></span></td>
             <td data-bind="text: Movies"></td>
             <td>
                 <a data-bind="attr: { href: '@Url.Action("Details")/' + Id }" class="btn btn-info">Details</a>
@@ -38,26 +38,39 @@
 @section Scripts{
     <script>
 
-            function ViewModel(customers, firstName, lastName) {
+            function ViewModel(customers) {
 
                 var self = this;
 
                 @*View foreach: movies is databound to this property.*@
                 self.customers = customers;
-                self.fullName = firstName + '  ' + lastName;
 
-                //This  function  is  a  wrapper  to the name property.
-                self.getName = function () {
+        };
 
-                    return self.fullName;
-                };
+        function FullNameViewModel(firstName, lastName) {
+
+            var self = this;
+
+            self.fullName = firstName + '  ' + lastName;
+
+            //This  function  is  a  wrapper  to the fullname property.
+            self.getName = function () {
+
+                return self.fullName;
             };
+        };
 
-            var viewModel = new ViewModel(@MoviedbMVC5.Extensions.HtmlHelperExtensions.HtmlConvertToJson(Model));
+        var viewModel = new ViewModel(@MoviedbMVC5.Extensions.HtmlHelperExtensions.HtmlConvertToJson(Model));
+
+        var fullNameViewModel = new FullNameViewModel("@Model.FirstName", "@Model.LastName");
+
+
+
         $(document).ready(function () {
             ko.applyBindings(viewModel);
-        });       
-        
+            ko.applyBindings(fullNameViewModel);
+        });
+
     </script>
 }
 
