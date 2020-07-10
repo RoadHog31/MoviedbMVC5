@@ -162,6 +162,10 @@
     <Compile Include="Migrations\202007100751302_datetimepropamended.designer.cs">
       <DependentUpon>202007100751302_datetimepropamended.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007101027278_updated.cs" />
+    <Compile Include="Migrations\202007101027278_updated.designer.cs">
+      <DependentUpon>202007101027278_updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007100751302_datetimepropamended.resx">
       <DependentUpon>202007100751302_datetimepropamended.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007101027278_updated.resx">
+      <DependentUpon>202007101027278_updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
