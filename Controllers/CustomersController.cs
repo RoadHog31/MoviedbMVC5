@@ -140,6 +140,11 @@ namespace MoviedbMVC5.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ViewKO()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

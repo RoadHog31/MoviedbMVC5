@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ViewKO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<!-- This is a *view* - HTML markup that defines the appearance of your UI -->
+
+<p>First name: <strong data-bind="text: firstName">todo</strong></p>
+<p>Last name: <strong data-bind="text: lastName">todo</strong></p>
+
+<br />
+
+<h2>Your seat reservations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Passenger name</th>
+            <th>Meal</th>
+            <th>Surcharge</th>
+            <th></th>
+        </tr>
+    </thead>
+    <!-- Todo: Generate table body -->
+    <tbody></tbody>
+</table>
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/ViewModels/ViewViewModel.js",
+"~/Scripts/ViewModels/ReservationsViewModel.js")
+
+    <script>        
+
+        $(document).ready(function () {
+
+            ko.applyBindings(new ViewViewModel());
+            ko.applyBindings(new ReservationsViewModel());
+
+        });
+
+    </script>
+}
