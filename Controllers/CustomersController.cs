@@ -1,5 +1,6 @@
 ﻿using MoviedbMVC5.DAL;
 using MoviedbMVC5.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,7 +18,11 @@ namespace MoviedbMVC5.Controllers
         // GET: Customers
         public ActionResult Index([Form] QueryOptions queryOptions)
         {
-            var customers = db.Customers.OrderBy(queryOptions.Sort);
+            var start = (queryOptions.CurrentPage - 1) * queryOptions.PageSize;
+
+            var customers = db.Customers.OrderBy(queryOptions.Sort).Skip(start).Take(queryOptions.PageSize);
+
+            queryOptions.TotalPages = (int)Math.Ceiling((double)db.Customers.Count() / queryOptions.PageSize);
 
             ViewBag.QueryOptions = queryOptions;
 

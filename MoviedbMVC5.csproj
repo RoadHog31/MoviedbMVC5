@@ -158,6 +158,10 @@
     <Compile Include="Migrations\202007090937449_CustomerPropertiesChanged.designer.cs">
       <DependentUpon>202007090937449_CustomerPropertiesChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007100751302_datetimepropamended.cs" />
+    <Compile Include="Migrations\202007100751302_datetimepropamended.designer.cs">
+      <DependentUpon>202007100751302_datetimepropamended.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -327,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -351,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007090937449_CustomerPropertiesChanged.resx">
       <DependentUpon>202007090937449_CustomerPropertiesChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007100751302_datetimepropamended.resx">
+      <DependentUpon>202007100751302_datetimepropamended.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
