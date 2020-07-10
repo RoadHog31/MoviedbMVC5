@@ -1,4 +1,4 @@
-# MoviedbMVC5 - Version 1.0
+# Movie Web App with a Horror bias- Version 1.0
 
 An ASP.Net MVC5 .Net Framework 4.8 and C# with Knockout.js.
 
